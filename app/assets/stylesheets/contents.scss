@@ -13,15 +13,22 @@
   width: 600px;
   margin: 0 auto;
   padding-top: 50px;
+  h1 {
+    padding-bottom: 50px;
+  }
   ul, ol {
     color: #1e366a;
-    border-top: solid #1e366a 1px;/*上のボーダー*/
-    border-bottom: solid #1e366a 1px;/*下のボーダー*/
     padding: 0.5em 0 0.5em 1.5em;
   }
-
   ul li, ol li {
     line-height: 1.5;
     padding: 0.5em 0;
+  }
+  .btn-link {
+    color: #ff2949;
+    background-color: #ffffff;
+  }
+  .card-header {
+    background-color: #ffffff;
   }
 }
