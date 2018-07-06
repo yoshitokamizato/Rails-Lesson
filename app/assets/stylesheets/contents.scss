@@ -7,3 +7,21 @@
   height: 3000px;
   margin: 0 auto;
 }
+
+
+#top-contents {
+  width: 600px;
+  margin: 0 auto;
+  padding-top: 50px;
+  ul, ol {
+    color: #1e366a;
+    border-top: solid #1e366a 1px;/*上のボーダー*/
+    border-bottom: solid #1e366a 1px;/*下のボーダー*/
+    padding: 0.5em 0 0.5em 1.5em;
+  }
+
+  ul li, ol li {
+    line-height: 1.5;
+    padding: 0.5em 0;
+  }
+}
