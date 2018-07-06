@@ -15,6 +15,9 @@
 
 @import "bootstrap";
 
+body {
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
+}
 
 @media screen and (min-width:0px){
   /*0px以上で適用する内容*/
