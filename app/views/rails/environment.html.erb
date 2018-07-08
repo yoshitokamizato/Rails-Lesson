@@ -9,11 +9,14 @@
   <div class="heading-container">
     <h4>Ruby on Rails 導入手順</h4>
   </div>
-  <div class="code-container">
-    <p>以下のリンクに飛ぶ</p>
-    <%= link_to "https://developer.apple.com/download/more/", :target => "_blank" do %>
-      <button type="button" class="btn btn-outline-primary">Command Line Tool</button>
-    <% end %>
+  <div class="code-container ">
+    <p>以下のリンクからCommand Line Toolをインストールできるappleのサイトに飛ぶ（Apple IDとPasswordが必要）</p>
+    <br/>
+    <div class="text-center">
+      <%= link_to "https://developer.apple.com/download/more/", :target => "_blank" do %>
+        <button type="button" class="btn btn-outline-primary">Command Line Tool</button>
+      <% end %>
+    </div>
   </div>
   <div class="code-container">
     <p>以下の手順でCommand Line Toolをインストール</p>
@@ -54,8 +57,8 @@ sudo chown -R `whoami`:admin /usr/local/bin
     </pre>
     <ul>
       <li>chownコマンドで指定したファイルやディレクトリの権限を変更</li>
-      <li>-R は指定したディレクトリとそのディレクトリ以下のファイルやディレクトリの権限を変更します。</li>
-      <li>whoamiコマンドは、現在のユーザー名を表示するコマンドです。</li>
+      <li>-R は指定したディレクトリとそのディレクトリ以下のファイルやディレクトリの権限を変更</li>
+      <li>whoamiコマンドは、現在のユーザー名を表示するコマンド</li>
     </ul>
   </div>
   <div class="code-container">
@@ -66,7 +69,7 @@ brew install rbenv ruby-build
       </code>
     </pre>
     <ul>
-      <li>ruby-build は、異なるバージョンのRubyをコンパイルしインストールするためのrbenvのプラグインです。</li>
+      <li>ruby-build は、異なるバージョンのRubyをコンパイルしインストールするためのrbenvのプラグイン</li>
       <li>rbenvはrubyのバージョンを切り替えるためのツール</li>
     </ul>
   </div>
