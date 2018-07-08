@@ -1,0 +1,178 @@
+<div id="environment-container">
+  <div class="title-container">
+    <h3>Environment</h3>
+  </div>
+  <p>ここでは、Ruby on Railsの環境構築手順をご説明します。</p>
+  <p>Ruby on RailsとはRubyを利用して効率よくWebサイトを開発できるようにしてくれる「フレームワーク」と呼ばれるものです。</p>
+  <p>そのRuby on Railsが動作する環境を構築し、Railsを使ってどんどんウェブサイトを作成していきましょう。</p>
+  <p>1つ1つのツールやコマンドがどのような役割を果たしているのか、確認しながら進めていくと応用力が身につきます。</p>
+  <div class="heading-container">
+    <h4>Ruby on Rails 導入手順</h4>
+  </div>
+  <div class="code-container ">
+    <p>以下のリンクからCommand Line Toolをインストールできるappleのサイトに飛ぶ（Apple IDとPasswordが必要）</p>
+    <br/>
+    <div class="text-center">
+      <%= link_to "https://developer.apple.com/download/more/", :target => "_blank" do %>
+        <button type="button" class="btn btn-outline-primary">Command Line Tool</button>
+      <% end %>
+    </div>
+  </div>
+  <div class="code-container">
+    <p>以下の手順でCommand Line Toolをインストール</p>
+    <ol>
+      <li>チェックボックスにチェックしてsubmit</li>
+      <li>download toolsを選択</li>
+      <li>see more downloadsのリンクをクリック</li>
+      <li>検索窓でcommandと検索</li>
+    </ol>
+  </div>
+  <div class="code-container">
+    <p>以下のコマンドをターミナルに入力し、Homebrewをインストール（コマンド入力後、Macのパスワードが求められるので入力）</p>
+    <pre class="prettyprint">
+      <code>
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>以下のコマンドをターミナルに入力し、Homebrewをインストール</p>
+    <pre class="prettyprint">
+      <code>
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>権限の変更</p>
+    <pre class="prettyprint">
+      <code>
+sudo chown -R `whoami`:admin /usr/local/bin
+      </code>
+    </pre>
+    <pre class="prettyprint">
+      <code>
+[書式] chown [オプション] ユーザー[:グループ] ファイル
+      </code>
+    </pre>
+    <ul>
+      <li>chownコマンドで指定したファイルやディレクトリの権限を変更</li>
+      <li>-R は指定したディレクトリとそのディレクトリ以下のファイルやディレクトリの権限を変更</li>
+      <li>whoamiコマンドは、現在のユーザー名を表示するコマンド</li>
+    </ul>
+  </div>
+  <div class="code-container">
+    <p>rbenv, ruby-buildのインストール</p>
+    <pre class="prettyprint">
+      <code>
+brew install rbenv ruby-build
+      </code>
+    </pre>
+    <ul>
+      <li>ruby-build は、異なるバージョンのRubyをコンパイルしインストールするためのrbenvのプラグイン</li>
+      <li>rbenvはrubyのバージョンを切り替えるためのツール</li>
+    </ul>
+  </div>
+  <div class="code-container">
+    <p>rbenvのパスを通す</p>
+    <pre class="prettyprint">
+      <code>
+echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>bash_profileの変更内容を読み込む</p>
+    <pre class="prettyprint">
+      <code>
+source ~/.bash_profile
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>readlineのinstall</p>
+    <pre class="prettyprint">
+      <code>
+brew install readline
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>readlineのパスを通す</p>
+    <pre class="prettyprint">
+      <code>
+brew link readline --force
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>readlineとrbenvを利用してRuby ver.2.3.1のインストール</p>
+    <pre class="prettyprint">
+      <code>
+RUBY_CONFIGURE_OPTS="--with-readline-dir=$(brew --prefix readline)"
+      </code>
+    </pre>
+    <pre class="prettyprint">
+      <code>
+rbenv install 2.3.1
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>リハッシュする</p>
+    <pre class="prettyprint">
+      <code>
+rbenv rehash
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>利用するRubyのバージョンを決める</p>
+    <pre class="prettyprint">
+      <code>
+rbenv global 2.3.1
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>Rubyのバージョン確認</p>
+    <pre class="prettyprint">
+      <code>
+ruby -v
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>bundlerのインストール</p>
+    <pre class="prettyprint">
+      <code>
+gem install bundler
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>Ruby on Railsのインストール</p>
+    <pre class="prettyprint">
+      <code>
+gem install rails
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>もう一度rehash</p>
+    <pre class="prettyprint">
+      <code>
+rbenv rehash
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>Rails のバージョンを確認する</p>
+    <pre class="prettyprint">
+      <code>
+rails -v
+      </code>
+    </pre>
+  </div>
+  <p>Railsのバージョンが表示されれば成功です。お疲れ様でした。</p>
+</div>
