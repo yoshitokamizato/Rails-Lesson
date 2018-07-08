@@ -7,7 +7,7 @@
   <p>最初は大変かもしれませんが、慣れると簡単に実装できるようになるものなので力まず学んでいきましょう。</p>
   <p>今回はユーザーの基本情報（名前や年齢など）を登録する簡単なアプリを作成します。</p>
   <div class="heading-container">
-    <h4>投稿機能実装手順</h4>
+    <h4>投稿機能実装手順（Create）</h4>
   </div>
   <p>投稿機能実装の流れは以下のようになります。</p>
   <ol>
@@ -21,7 +21,6 @@
     <li>データ登録用のルーティング定義</li>
     <li>createアクションを定義</li>
     <li>データ登録完了画面の作成</li>
-    <li>indexアクションを定義</li>
   </ol>
   <p>それでは早速実装していきましょう。</p>
   <br />
@@ -110,6 +109,43 @@ post '/user/new', to: 'user#new'
 def create
   User.create(name: params[:name])
 end
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>views/usersにcreate.html.erbを作成</p>
+    <p>以下のコードを記述</p>
+    <pre class="prettyprint">
+      <code>
+&lt;p&gt;登録完了！！！！&lt;/p&gt;
+      </code>
+    </pre>
+  </div>
+  <div class="heading-container">
+    <h4>一覧表示機能実装手順（Read）</h4>
+  </div>
+  <p>一覧表示機能の実装は超簡単です。</p>
+  <ol>
+    <li>indexアクションを定義</li>
+    <li>一覧表示画面の作成</li>
+  </ol>
+  <div class="code-container">
+    <p>indexアクションを定義</p>
+    <pre class="prettyprint">
+      <code>
+def index
+  @users = User.all
+end
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>views/usersにindex.html.erbを作成</p>
+    <pre class="prettyprint">
+      <code>
+&lt;% @users.each do |user| %&gt;
+  &lt;%= user.name %&gt;
+&lt;% end %&gt;
       </code>
     </pre>
   </div>
