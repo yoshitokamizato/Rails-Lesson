@@ -40,32 +40,260 @@
       </div>
     </div>
   </div>
-  <p></p>
+  <div class="heading-container">
+    <h4>Bootstrap導入方法</h4>
+  </div>
+  <div class="code-container">
+    <p>Gemfileに以下のコードを追記</p>
+    <pre class="prettyprint">
+     <code>
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
+     </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>gemをインストール</p>
+    <pre class="prettyprint">
+     <code>
+bundle install
+     </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>sprockets-railsが2.3.2以上であることを確認</p>
+    <pre class="prettyprint">
+     <code>
+bundle show |fgrep sprockets-rails
+     </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>application.cssのファイル名をapplication.scssに変更</p>
+    <pre class="prettyprint">
+     <code>
+application.css => application.scss
+     </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>application.scssに以下のコードを追記</p>
+    <pre class="prettyprint">
+       <code>
+@import "bootstrap";
+       </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>application.scssの以下のコードを削除</p>
+    <pre class="prettyprint">
+       <code>
+*= require_tree .
+       </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>applicaiton.jsに以下のコードを追記</p>
+    <pre class="prettyprint">
+       <code>
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+       </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>レスポンシブに対応させる application.html.erbに記述</p>
+    <pre class="prettyprint">
+       <code>
+&lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+       </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>以下のコードをhtml.erbに記述し、Bootstrapが適用されているか確かめる</p>
+    <pre class="prettyprint">
+       <code>
+&lt;button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top"&gt;
+  Tooltip on top
+&lt;/button&gt;
+       </code>
+    </pre>
+  </div>
+  <div class="code-container text-center">
+    <p>これが表示されてたら成功</p>
+    <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+      Tooltip on top
+    </button>
+  </div>
+  <div class="code-container text-center">
+    <p>こういうのも作れるよ（Click!）</p>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p class="modal-title" id="exampleModalCenterTitle">Modal title</p>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="heading-container">
+    <h4>Components</h4>
+  </div>
   <p>僕が実際に現場でよく使用するBootstrapのComponentsをご紹介します。</p>
-  <p></p>
-  <h4>ナビゲーションバー</h4>
-  <p>変数とは、値を入れておく箱のようなものです。この変数を使うことによって、値を使いまわすことができます。</p>
-  <p>変数のおかげで、プログラマーは「3243432423」などのややこしい値を暗記する必要がなく、ミスなく効率的にプログラムを書くことができます。</p>
-  <p>また、将来的にデータに変更があった場合でも一部分を書き換えるだけで全体にデータが適用されるため、変更に強いプログラムを組むことができます。</p>
-  <div class="code-container">
-    <h5>コード</h5>
-    <pre class="prettyprint">
-     <code>
-       name = "鈴木"
-       puts name
-       price = 3243432423
-       puts price
-     </code>
-    </pre>
+  <div class="component-container">
+    <p>Navbar</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </div>
-  <div class="code-container">
-    <h5>出力結果</h5>
-    <pre class="prettyprint">
-     <code>
-       鈴木
-       3243432423
-     </code>
-    </pre>
+  <div class="component-container">
+    <p>Table</p>
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table class="table">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="component-container">
+    <p>Pagination</p>
+    <nav aria-label="...">
+      <ul class="pagination">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active">
+          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+  <div class="component-container">
+    <p>Button</p>
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-dark">Dark</button>
   </div>
   <p></p>
+  <div class="heading-container">
+    <h4>公式サイト</h4>
+  </div>
+  <p>公式サイトにはいろんなComponentsのコードが用意されているので、ぜひご参考にしてみてください。</p>
+  <p>Bootstrapを導入すると、Webデザインの幅が一気に広がりますよ。</p>
+  <div class="button-container text-center">
+    <%= link_to "https://getbootstrap.com/docs/4.1/components/alerts/", :target => "_blank" do %>
+      <button type="button" class="btn btn-outline-primary">Check Bootstrap</button>
+    <% end %>
+  </div>
 </div>
