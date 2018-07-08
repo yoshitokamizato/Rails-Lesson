@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   get '/if', to: 'rubys#if'
   get '/bootstrap', to: 'rails#bootstrap'
   get '/environment', to: 'rails#environment'
+  get '/crud', to: 'rails#crud'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

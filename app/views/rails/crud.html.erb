@@ -1,0 +1,116 @@
+<div id="environment-container">
+  <div class="title-container">
+    <h3>CRUD</h3>
+  </div>
+  <p>CRUDとは、データベース管理システムに必要とされる4つの主要な機能、Create（作成）、Read（読み込み）、Update（更新）、Delete（削除）のことです。</p>
+  <p>現場で働くには、このCRUD処理を実装できることが最低条件となります。</p>
+  <p>最初は大変かもしれませんが、慣れると簡単に実装できるようになるものなので力まず学んでいきましょう。</p>
+  <p>今回はユーザーの基本情報（名前や年齢など）を登録する簡単なアプリを作成します。</p>
+  <div class="heading-container">
+    <h4>投稿機能実装手順</h4>
+  </div>
+  <p>投稿機能実装の流れは以下のようになります。</p>
+  <ol>
+    <li>モデルの作成</li>
+    <li>migrationを実行してテーブル作成</li>
+    <li>新規投稿画面用のルーティング定義</li>
+    <li>コントローラ作成</li>
+    <li>newアクションを定義</li>
+    <li>新規投稿画面用の作成</li>
+    <li>投稿フォーム作成</li>
+    <li>データ登録用のルーティング定義</li>
+    <li>createアクションを定義</li>
+    <li>データ登録完了画面の作成</li>
+    <li>indexアクションを定義</li>
+  </ol>
+  <p>それでは早速実装していきましょう。</p>
+  <br />
+  <div class="code-container">
+    <p>以下のコマンドをターミナルで実行し、userモデルを作成する</p>
+    <pre class="prettyprint">
+      <code>
+rails g model user
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>userモデル作成時、同時にmigrationファイルが作成されるので以下のようにコードを追記する</p>
+    <pre class="prettyprint">
+      <code>
+class CreateUsers < ActiveRecord::Migration
+  def change
+    create_table :users do |t|
+      t.string :name
+      t.timestamps
+    end
+  end
+end
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>投稿ページへのリンクを作成する</p>
+    <pre class="prettyprint">
+      <code>
+&lt;%= link_to "投稿ページへ", "/users/new" %&gt;
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>投稿ページへのルートを定義</p>
+    <pre class="prettyprint">
+      <code>
+get '/users/new', to: 'users#new'
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>以下のコマンドをターミナルで実行し、usersコントローラを作成</p>
+    <pre class="prettyprint">
+      <code>
+rails g controller users
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>usersコントローラにnewアクションを定義</p>
+    <pre class="prettyprint">
+      <code>
+def new
+  @user = User.new
+end
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>views/usersディレクトリにnew.html.erbを作成</p>
+    <p>ファイルを作成後、以下のコードを記述</p>
+    <pre class="prettyprint">
+      <code>
+&lt;%= form_with model: @user, local: true do |f| %&gt;
+      &lt;%= f.label "名前" %&gt;
+      &lt;%= f.text_field :name %&gt;
+      &lt;%= f.submit :class=>"btn-primary" %&gt;
+&lt;% end %&gt;
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>データ登録用のルーティングを定義</p>
+    <pre class="prettyprint">
+      <code>
+post '/user/new', to: 'user#new'
+      </code>
+    </pre>
+  </div>
+  <div class="code-container">
+    <p>createアクションを定義</p>
+    <pre class="prettyprint">
+      <code>
+def create
+  User.create(name: params[:name])
+end
+      </code>
+    </pre>
+  </div>
+</div>
